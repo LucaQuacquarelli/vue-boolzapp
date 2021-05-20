@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="css/style.css">
+        <title>Whatsapp Web</title>
+    </head>
+    <body>
+        <div class="container">
+            <header></header>
+            <div class="app-container" id="root">
+                <div class="chat-list"></div>
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <div class="contact-info">
+                            <div class="contact-photo">
+                                <img src="img/avatar_1.jpg" alt="contact photo">
+                            </div>
+                            <div class="contact-name">
+                                <div class="name">Michele</div>
+                                <div class="activity">Ultimo accesso oggi alle 17.30</div>
+                            </div>
+                        </div>
+                        <div class="button-chat">
+                            <i class="fas fa-search"></i>
+                            <i class="fas fa-paperclip"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+                    <div class="chat-text"></div>
+                    <div class="chat-footer">
+                        <i class="far fa-smile"></i>
+                        <input type="text" placeholder="Scrivi un messaggio">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                </div>
+            </div>
+            <script src="js/script.js"></script>
+        </div>
+    </body>
+</html>
