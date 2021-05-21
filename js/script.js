@@ -7,6 +7,7 @@ var app = new Vue(
                     name: 'Michele',
                     avatar: '_1',
                     visible: true,
+                    activity: 'Ultimo accesso oggi alle 02:18',
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -29,6 +30,7 @@ var app = new Vue(
                     name: 'Fabio',
                     avatar: '_2',
                     visible: true,
+                    activity: 'Ultimo accesso oggi alle 12:02',
                     messages: [
                         {
                             date: '20/03/2020 16:30:00',
@@ -51,6 +53,7 @@ var app = new Vue(
                     name: 'Samuele',
                     avatar: '_3',
                     visible: true,
+                    activity: 'Online',
                     messages: [
                         {
                             date: '28/03/2020 10:10:40',
@@ -73,6 +76,7 @@ var app = new Vue(
                     name: 'Luis',
                     avatar: '_4',
                     visible: true,
+                    activity: 'Ultimo accesso 12/01/2021 alle 19:00',
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -86,9 +90,129 @@ var app = new Vue(
                         }
                     ],
                 },
-            ]
+                {
+                    name: 'Anastasia',
+                    avatar: '_6',
+                    visible: true,
+                    activity: 'Ultimo accesso oggi alle 17.30',
+                    messages: [
+                        {
+                            date: '10/01/2020 15:30:55',
+                            text: 'Hai portato a spasso il cane?',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 15:50:00',
+                            text: 'Ricordati di dargli da mangiare',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 16:15:22',
+                            text: 'Tutto ok!',
+                            status: 'received'
+                        }
+                    ],
+                },
+                {
+                    name: 'Pluto',
+                    avatar: '_7',
+                    visible: true,
+                    activity: 'Ultimo accesso oggi alle 07:30',
+                    messages: [
+                        {
+                            date: '10/01/2020 15:30:55',
+                            text: 'Hai portato a spasso il cane?',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 16:15:22',
+                            text: 'Tutto fatto!',
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 15:50:00',
+                            text: 'Ricordati di dargli da mangiare',
+                            status: 'sent'
+                        }
+                    ],
+                },
+                {
+                    name: 'Paperino',
+                    avatar: '_8',
+                    visible: true,
+                    activity: 'Online',
+                    messages: [
+                        {
+                            date: '10/01/2020 15:30:55',
+                            text: 'Come stai?',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 15:50:00',
+                            text: 'Bene tu?',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 16:15:22',
+                            text: 'Disastro totale',
+                            status: 'received'
+                        }
+                    ],
+                },
+                {
+                    name: 'Genoveffa',
+                    avatar: '_io',
+                    visible: true,
+                    activity: 'Ultimo accesso oggi alle 21:47',
+                    messages: [
+                        {
+                            date: '10/01/2020 15:30:55',
+                            text: 'Sono stanca',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 15:50:00',
+                            text: 'Dormi',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 16:15:22',
+                            text: 'Lo farò dopo aver terminato i compiti',
+                            status: 'received'
+                        }
+                    ],
+                },
+            ],
+            activeIndex: 0
         },
-        methods: { 
+        methods: {
+            getContactImg: function(contactIndex) {
+                const { avatar } = this.contacts[contactIndex];
+                return `img/avatar${avatar}.jpg`;
+            },
+            getData: function(contactIndex) {
+                const lastData = this.contacts[contactIndex].messages.length -1;
+                return this.contacts[contactIndex].messages[lastData].date;
+            },
+            getLastMessage: function(contactIndex) {
+                const lastMessage = this.contacts[contactIndex].messages.length -1;
+                return this.contacts[contactIndex].messages[lastMessage].text;
+            },
+            getChatContactImg: function() {
+                let contactImg = this.contacts[this.activeIndex].avatar;
+                return `img/avatar${contactImg}.jpg`
+            },
+            getChatContactName: function() {
+                let contactName = this.contacts[this.activeIndex].name;
+                return contactName;
+            },
+            setActive: function(newIndex) {
+                this.activeIndex = newIndex;
+            },
+            getContactActivity: function() {
+                let contactActivity = this.contacts[this.activeIndex].activity;
+                return contactActivity;
+            }
         }
     }
 ) 

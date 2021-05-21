@@ -9,13 +9,14 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" href="img/favicon.ico">
         <title>Whatsapp Web</title>
     </head>
     <body>
         <div class="container">
             <header></header>
-            <div class="app-container" id="root">
-                <div class="chat-list">
+            <main class="app-container" id="root">
+                <aside class="chat-list">
                     <div class="chat-list-header">
                         <div class="user-info">
                             <div class="user-photo">
@@ -39,31 +40,36 @@
                         </div>
                     </div>
                     <div class="find-bar">
-                        <i class="fas fa-search font-14"></i>
+                        <label for="search">
+                            <i class="fas fa-search font-14"></i>
+                        </label>
                         <input type="text" placeholder="Cerca o inizia una nuova chat" class="font-12">
                     </div>
                     <div class="all-chat">
-                        <div class="contact-chat" v-for="(contact, index) in contacts">
+                        <div class="contact-chat" 
+                        v-for="(contact, index) in contacts"
+                        :class="(index == activeIndex) ? 'active' : ''"
+                        @click="setActive(index)">
                             <div class="photo-chat">
-                                <img :src="`img/avatar${contact.avatar}.jpg`" alt="contact photo">
+                                <img :src="getContactImg(index)" alt="contact photo">
                             </div>
                             <div class="name-chat">
                                 <div class="name font-14">{{contact.name}}</div>
-                                <div class="activity">01/01/1970 09:45:00</div>
-                                <div class="message-chat">Buongiorno come stai</div>
+                                <div class="activity">{{getData(index)}}</div>
+                                <div class="message-chat">{{getLastMessage(index)}}</div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="chat-container">
+                </aside>
+                <section class="chat-container">
                     <div class="chat-header">
                         <div class="contact-info">
                             <div class="contact-photo">
-                                <img src="img/avatar_1.jpg" alt="contact photo">
+                                <img :src="getChatContactImg()" alt="contact photo">
                             </div>
                             <div class="contact-name">
-                                <div class="name font-14">Michele</div>
-                                <div class="activity">Ultimo accesso oggi alle 17.30</div>
+                                <div class="name font-14">{{getChatContactName()}}</div>
+                                <div class="activity">{{getContactActivity()}}</div>
                             </div>
                         </div>
                         <div class="button-chat">
@@ -73,13 +79,7 @@
                         </div>
                     </div>
                     <div class="chat-text">
-                        <div class="message-received">
-                            <div class="message font-12">
-                                <span>Ciao</span>
-                                <div class="activity">01/01/1970 09:45:00</div>
-                            </div>
-                        </div>
-                        <div class="message-sended">
+                        <div class="messages sended">
                             <div class="message font-12">
                                 <span>Ciao</span>
                                 <div class="activity">01/01/1970 09:45:00</div>
@@ -91,8 +91,8 @@
                         <input type="text" placeholder="Scrivi un messaggio">
                         <i class="fas fa-microphone"></i>
                     </div>
-                </div>
-            </div>
+                </section>
+            </main>
             <script src="js/script.js"></script>
         </div>
     </body>

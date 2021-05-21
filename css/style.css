@@ -160,6 +160,12 @@ header {
     display: flex;
     padding: 10px;
     border-bottom: 1px solid #d9d9e0;
+    cursor: pointer;
+}
+
+.contact-chat:hover,
+.contact-chat.active {
+    background-color: #e9ebeb;
 }
 
 .contact-chat .name-chat {
@@ -203,8 +209,7 @@ header {
     overflow-y: scroll;
 }
 
-.message-received .message,
-.message-sended .message {
+.messages .message {
     position: relative;
     width: 40%;
     padding: 5px 10px;
@@ -218,18 +223,18 @@ header {
     right: 5px;
 }
 
-.message-received .message {
+.messages.received .message {
     background-color: white;
 }
 
-.chat-text .message-sended {
+.chat-text .messages.sended {
     display: table;
     content: "";
     clear: both;
     width: 100%;
 }
 
-.message-sended .message {
+.messages.sended .message {
     float: right;
     background-color: #d5f9ba;
 }
