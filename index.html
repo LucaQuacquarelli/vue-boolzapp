@@ -15,7 +15,46 @@
         <div class="container">
             <header></header>
             <div class="app-container" id="root">
-                <div class="chat-list"></div>
+                <div class="chat-list">
+                    <div class="chat-list-header">
+                        <div class="user-info">
+                            <div class="user-photo">
+                                <img src="img/avatar_5.jpg" alt="User photo">
+                            </div>
+                            <div class="user-name font-14">Luca Quacquarelli</div>
+                        </div>
+                        <div class="button-chat">
+                            <i class="fas fa-circle-notch"></i>
+                            <i class="fas fa-comment-alt"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+                    <div class="notification">
+                        <div class="notify-icon">
+                            <i class="fas fa-bell-slash"></i>
+                        </div>
+                        <div class="notify-text">
+                            <div class="text-message font-14">Ricevi notifiche di nuovi messaggi</div>
+                            <div class="active-notify font-12">Attiva notifiche desktop</div>
+                        </div>
+                    </div>
+                    <div class="find-bar">
+                        <i class="fas fa-search font-14"></i>
+                        <input type="text" placeholder="Cerca o inizia una nuova chat" class="font-12">
+                    </div>
+                    <div class="all-chat">
+                        <div class="contact-chat" v-for="(contact, index) in contacts">
+                            <div class="photo-chat">
+                                <img :src="`img/avatar${contact.avatar}.jpg`" alt="contact photo">
+                            </div>
+                            <div class="name-chat">
+                                <div class="name font-14">{{contact.name}}</div>
+                                <div class="activity">01/01/1970 09:45:00</div>
+                                <div class="message-chat">Buongiorno come stai</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="chat-container">
                     <div class="chat-header">
                         <div class="contact-info">
@@ -23,7 +62,7 @@
                                 <img src="img/avatar_1.jpg" alt="contact photo">
                             </div>
                             <div class="contact-name">
-                                <div class="name">Michele</div>
+                                <div class="name font-14">Michele</div>
                                 <div class="activity">Ultimo accesso oggi alle 17.30</div>
                             </div>
                         </div>
@@ -33,7 +72,20 @@
                             <i class="fas fa-ellipsis-v"></i>
                         </div>
                     </div>
-                    <div class="chat-text"></div>
+                    <div class="chat-text">
+                        <div class="message-received">
+                            <div class="message font-12">
+                                <span>Ciao</span>
+                                <div class="activity">01/01/1970 09:45:00</div>
+                            </div>
+                        </div>
+                        <div class="message-sended">
+                            <div class="message font-12">
+                                <span>Ciao</span>
+                                <div class="activity">01/01/1970 09:45:00</div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="chat-footer">
                         <i class="far fa-smile"></i>
                         <input type="text" placeholder="Scrivi un messaggio">
