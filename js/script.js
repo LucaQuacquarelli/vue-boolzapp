@@ -196,7 +196,7 @@ var app = new Vue(
             },
             getLastMessage: function(contactIndex) {
                 const lastMessage = this.contacts[contactIndex].messages.length -1;
-                return this.contacts[contactIndex].messages[lastMessage].text;
+                return this.contacts[contactIndex].messages[lastMessage].text.substr(0, 30) + "...";
             },
             getChatContactImg: function() {
                 let contactImg = this.contacts[this.activeIndex].avatar;

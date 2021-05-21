@@ -79,10 +79,12 @@
                         </div>
                     </div>
                     <div class="chat-text">
-                        <div class="messages sended">
+                        <div v-for="message in contacts[activeIndex].messages"
+                        class="messages"
+                        :class="(message.status == 'sent') ? 'sended' :'received'">
                             <div class="message font-12">
-                                <span>Ciao</span>
-                                <div class="activity">01/01/1970 09:45:00</div>
+                                <span>{{message.text}}</span>
+                                <div class="activity">{{message.date}}</div>
                             </div>
                         </div>
                     </div>
