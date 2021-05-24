@@ -267,3 +267,7 @@ header {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.no_display {
+    display: none;
+}

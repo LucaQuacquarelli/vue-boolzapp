@@ -184,7 +184,8 @@ var app = new Vue(
                 },
             ],
             activeIndex: 0,
-            newMessage: ""
+            newMessage: "",
+            messageData: ""
         },
         methods: {
             getContactImg: function(contactIndex) {
@@ -215,23 +216,36 @@ var app = new Vue(
                 return contactActivity;
             },
             sendMessage: function() {
+
+                this.messageData = dayjs().format('DD/MM/YY HH:mm:ss');
+
                 let msgSended = {
-                    date: '10/01/2020 15:50:00',
+                    date: this.messageData,
                     text: this.newMessage,
                     status: 'sent'
                 };
                 let msgReceive = {
-                    date: '10/01/2020 15:50:00',
+                    date: this.messageData,
                     text: "ok!",
                     status: 'received'
                 };
-                this.contacts[this.activeIndex].messages.push(msgSended);
+                if (this.newMessage.trim().length > 0){
+                    this.contacts[this.activeIndex].messages.push(msgSended);
+                    setTimeout(()=>{ 
+                        this.contacts[this.activeIndex].messages.push(msgReceive);
+                    }, 1000);
+                };
                 this.newMessage = "";
-
-                setTimeout(()=>{ 
-                    this.contacts[this.activeIndex].messages.push(msgReceive);
-                }, 1000);
-                
+            },
+            searchChat: function(event) {
+                const searchInput = event.target.value;
+                return this.contacts.map(contact => {
+                  if (contact.name.toLowerCase().includes(searchInput.toLowerCase())) {
+                      contact.visible = true;
+                  } else {
+                      contact.visible = false;
+                  }
+                })
             }
         }
     }
