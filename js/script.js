@@ -215,13 +215,23 @@ var app = new Vue(
                 return contactActivity;
             },
             sendMessage: function() {
-                let msg = {
+                let msgSended = {
                     date: '10/01/2020 15:50:00',
                     text: this.newMessage,
                     status: 'sent'
                 };
-                this.contacts[this.activeIndex].messages.push(msg)
-                return this.newMessage = "";
+                let msgReceive = {
+                    date: '10/01/2020 15:50:00',
+                    text: "ok!",
+                    status: 'received'
+                };
+                this.contacts[this.activeIndex].messages.push(msgSended);
+                this.newMessage = "";
+
+                setTimeout(()=>{ 
+                    this.contacts[this.activeIndex].messages.push(msgReceive);
+                }, 1000);
+                
             }
         }
     }
