@@ -108,7 +108,7 @@ var app = new Vue(
                         },
                         {
                             date: '10/01/2020 16:15:22',
-                            text: 'Tutto ok!',
+                            text: 'Si non ti preoccupare',
                             status: 'received'
                         }
                     ],
@@ -126,7 +126,7 @@ var app = new Vue(
                         },
                         {
                             date: '10/01/2020 16:15:22',
-                            text: 'Tutto fatto!',
+                            text: 'Si sto tornando a casa ora!',
                             status: 'received'
                         },
                         {
@@ -150,12 +150,12 @@ var app = new Vue(
                         {
                             date: '10/01/2020 15:50:00',
                             text: 'Bene tu?',
-                            status: 'sent'
+                            status: 'received'
                         },
                         {
                             date: '10/01/2020 16:15:22',
                             text: 'Disastro totale',
-                            status: 'received'
+                            status: 'sent'
                         }
                     ],
                 },
@@ -167,23 +167,24 @@ var app = new Vue(
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
-                            text: 'Sono stanca',
+                            text: 'Sono stanco',
                             status: 'sent'
                         },
                         {
                             date: '10/01/2020 15:50:00',
                             text: 'Dormi',
-                            status: 'sent'
+                            status: 'received'
                         },
                         {
                             date: '10/01/2020 16:15:22',
                             text: 'Lo farò dopo aver terminato i compiti',
-                            status: 'received'
+                            status: 'sent'
                         }
                     ],
                 },
             ],
-            activeIndex: 0
+            activeIndex: 0,
+            newMessage: ""
         },
         methods: {
             getContactImg: function(contactIndex) {
@@ -212,6 +213,15 @@ var app = new Vue(
             getContactActivity: function() {
                 let contactActivity = this.contacts[this.activeIndex].activity;
                 return contactActivity;
+            },
+            sendMessage: function() {
+                let msg = {
+                    date: '10/01/2020 15:50:00',
+                    text: this.newMessage,
+                    status: 'sent'
+                };
+                this.contacts[this.activeIndex].messages.push(msg)
+                return this.newMessage = "";
             }
         }
     }

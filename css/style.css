@@ -169,15 +169,19 @@ header {
 }
 
 .contact-chat .name-chat {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
     width: 100%;
+    display: table;
+    content: "";
+    clear: both;
 }
 
 .contact-chat .name-chat .name, 
 .contact-chat .name-chat .message-chat {
     margin: 0 10px;
+}
+
+.contact-chat .name-chat .activity {
+    float: right;
 }
 
 .contact-chat .name-chat .message-chat {
