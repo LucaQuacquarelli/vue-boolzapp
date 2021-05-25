@@ -191,15 +191,15 @@ var app = new Vue(
         },
         methods: {
             getContactImg: function(contactIndex) {
-                const { avatar } = this.contacts[contactIndex];
+                let { avatar } = this.contacts[contactIndex];
                 return `img/avatar${avatar}.jpg`;
             },
             getData: function(contactIndex) {
-                const lastData = this.contacts[contactIndex].messages.length -1;
+                let lastData = this.contacts[contactIndex].messages.length -1;
                 return this.contacts[contactIndex].messages[lastData].date;
             },
             getLastMessage: function(contactIndex) {
-                const lastMessage = this.contacts[contactIndex].messages.length -1;
+                let lastMessage = this.contacts[contactIndex].messages.length -1;
                 return this.contacts[contactIndex].messages[lastMessage].text.substr(0, 30) + "...";
             },
             getChatContactImg: function() {
@@ -240,7 +240,7 @@ var app = new Vue(
                 this.newMessage = "";
             },
             searchChat: function(event) {
-                const searchInput = event.target.value;
+                let searchInput = event.target.value;
                 return this.contacts.map(contact => {
                   if (contact.name.toLowerCase().includes(searchInput.toLowerCase())) {
                       contact.visible = true;
@@ -255,8 +255,20 @@ var app = new Vue(
             },
             deleteMessage: function(msgIndex) {
                 this.contacts[this.activeIndex].messages.splice(msgIndex, 1);
+                if (this.contacts[this.activeIndex].messages.length == 0) { 
+                    this.contacts.splice(this.activeIndex, 1);
+                }
                 this.option = false;
+            },
+            fixMsgDown: function() {
+                let chatList = document.querySelectorAll('.message');
+                if (chatList.length != 0) {
+                    chatList[chatList.length -1].scrollIntoView();
+                }        
             }
+        },
+        updated () {
+            this.fixMsgDown();
         }
     }
 ) 

@@ -246,6 +246,7 @@ header {
     border: 1px solid #b1b1b8;
     font-size: 10px;
     text-align: right;
+    z-index: 2;
 }
 
 .dropdown-content > div {
@@ -304,5 +305,9 @@ header {
 }
 
 .no_display {
+    display: none;
+}
+
+#no-message {
     display: none;
 }

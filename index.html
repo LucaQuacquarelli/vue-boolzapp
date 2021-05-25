@@ -80,6 +80,7 @@
                         </div>
                     </div>
                     <div class="chat-text">
+                        <div id="no-message">Ciao</div>
                         <div v-for="(message, index) in contacts[activeIndex].messages"
                         class="messages"
                         :class="(message.status == 'sent') ? 'sended' :'received'">
