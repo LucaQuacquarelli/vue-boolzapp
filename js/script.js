@@ -185,7 +185,9 @@ var app = new Vue(
             ],
             activeIndex: 0,
             newMessage: "",
-            messageData: ""
+            messageData: "",
+            option: false,
+            msgIndex: 0
         },
         methods: {
             getContactImg: function(contactIndex) {
@@ -246,6 +248,14 @@ var app = new Vue(
                       contact.visible = false;
                   }
                 })
+            },
+            dropdownOpen: function(index) {
+                this.msgIndex = index;
+                this.option = !this.option;
+            },
+            deleteMessage: function(msgIndex) {
+                this.contacts[this.activeIndex].messages.splice(msgIndex, 1);
+                this.option = false;
             }
         }
     }
